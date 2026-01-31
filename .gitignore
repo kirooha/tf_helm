@@ -1,0 +1,4 @@
+commands
+http_requests/gcp
+infra/.terraform
+infra/terraform.tfstate.backup

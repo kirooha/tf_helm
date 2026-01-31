@@ -1,0 +1,10 @@
+image:
+  repository: eu.gcr.io/my-new-project-467616/kuber_practice_app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+replicaCount: 3
+
+service:
+  type: ClusterIP
+  port: 8080

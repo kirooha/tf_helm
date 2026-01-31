@@ -1,0 +1,15 @@
+gcloud auth application-default print-access-token
+curl -s "https://oauth2.googleapis.com/tokeninfo?access_token=token" | sed 's/,/\n/g'
+
+gcloud auth application-default revoke
+gcloud auth application-default login
+
+gcloud auth login
+gcloud auth configure-docker
+
+gcloud config set account gcpkir7ooha@gmail.com
+gcloud config set project my-new-project-467616
+
+gcloud container clusters get-credentials demo-cluster --region europe-west1
+
+https://console.cloud.google.com/billing?organizationId=0
