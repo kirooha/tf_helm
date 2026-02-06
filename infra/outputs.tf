@@ -17,3 +17,11 @@ output "db_name" {
 output "db_user" {
   value = google_sql_user.appuser.name
 }
+
+output "redis_host" {
+  value = google_redis_instance.redis.host
+}
+
+output "redis_port" {
+  value = google_redis_instance.redis.port
+}

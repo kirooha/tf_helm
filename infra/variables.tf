@@ -8,12 +8,10 @@ variable "region" {
 
 variable "cluster_name" {
   type = string
-  default = "demo-cluster"
 }
 
 variable "db_instance_name" {
   type = string
-  default = "app-postgres"
 }
 
 variable "db_tier" {
@@ -34,5 +32,17 @@ variable "db_password" {
 }
 
 variable "authorized_cidr" {
+  type = string
+}
+
+variable "redis_name" {
+  type = string
+}
+
+variable "redis_size_gb" {
+  type = number
+}
+
+variable "vpc_self_link" {
   type = string
 }
