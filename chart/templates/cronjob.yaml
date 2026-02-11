@@ -1,0 +1,52 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Chart.Name }}-redis-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ .Chart.Name }}-redis-cronjob
+              image: {{ .Values.cronJobImage.repository }}@{{ .Values.cronJobImage.digest }}
+              env:
+                - name: APP_DB_USER
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kuber-practice-app-service-config
+                      key: POSTGRES_USER
+                - name: APP_DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: kuber-practice-app-secrets
+                      key: postgres_password
+                - name: APP_DB_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kuber-practice-app-service-config
+                      key: POSTGRES_HOST
+                - name: APP_DB_PORT
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kuber-practice-app-service-config
+                      key: POSTGRES_PORT
+                - name: APP_DB_NAME
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kuber-practice-app-service-config
+                      key: POSTGRES_DB
+                - name: APP_REDIS_HOST
+                  valueFrom:
+                    configMapKeyRef:
+                      name: kuber-practice-app-service-config
+                      key: REDIS_HOST
+                - name: APP_REDIS_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: kuber-practice-app-secrets
+                      key: redis_password
+          restartPolicy: OnFailure

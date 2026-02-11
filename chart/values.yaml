@@ -3,6 +3,11 @@ image:
   digest: sha256:3f61cad25440fc667a0211f2073166c0dd619b98a9e1a9f5a43efb2c88a4129a
   pullPolicy: IfNotPresent
 
+cronJobImage:
+  repository: eu.gcr.io/my-new-project-467616/kuber_practice_app_redis
+  digest: sha256:51502b1c7bddf072b1757fa609d529cb154e646fe2bd58c7ae7f75121e611033
+  pullPolicy: IfNotPresent
+
 replicaCount: 3
 
 service:

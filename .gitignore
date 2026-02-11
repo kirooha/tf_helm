@@ -7,3 +7,4 @@ terraform/terraform.tfvars
 terraform/.terraform.lock.hcl
 terraform/.terraform.tfstate.lock.info
 chart/templates/secret.yaml
+http_requests/gcp
