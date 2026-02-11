@@ -1,8 +1,9 @@
 commands
 http_requests/gcp
-infra/.terraform
-infra/terraform.tfstate
-infra/terraform.tfstate.backup
-infra/terraform.tfvars
-infra/.terraform.lock.hcl
-infra/.terraform.tfstate.lock.info
+terraform/.terraform
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/terraform.tfvars
+terraform/.terraform.lock.hcl
+terraform/.terraform.tfstate.lock.info
+chart/templates/secret.yaml

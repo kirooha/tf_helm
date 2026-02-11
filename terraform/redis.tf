@@ -8,4 +8,8 @@ resource "google_redis_instance" "redis" {
 
   redis_version = "REDIS_7_0"
   display_name = var.redis_name
+
+  auth_enabled = true
+
+  depends_on = [google_service_networking_connection.cloudsql_vpc_connection]
 }

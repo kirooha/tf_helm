@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kuber-practice-app-service-config
+data:
+  PORT: "8080"
+  POSTGRES_USER: "kuber_practice_user"
+  POSTGRES_HOST: "10.47.0.3"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "kuber_practice"
+  MIGRATIONS_DIRECTORY: "/app/db/migrations"
+  REDIS_HOST: "10.37.232.115:6379"
