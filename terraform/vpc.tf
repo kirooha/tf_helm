@@ -21,5 +21,7 @@ resource "google_service_networking_connection" "cloudsql_vpc_connection" {
     google_compute_global_address.cloudsql_private_range.name
   ]
 
+  deletion_policy = "ABANDON"
+
   depends_on = [google_project_service.servicenetworking]
 }
