@@ -105,6 +105,7 @@ func main() {
 	app.Get("/files", handlers.NewListHandler(queries, redisClient, apiKey).Handle)
 	app.Get("/healthcheck", handlers.NewHealthcheckHandler().Handle)
 	app.Post("/file", handlers.NewSaveHandler(queries, apiKey).Handle)
+	app.Post("/foo", handlers.NewFooHandler().Handle)
 
 	log.Fatal(app.Listen(fmt.Sprintf(":%s", port)))
 }
