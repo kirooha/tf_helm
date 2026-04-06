@@ -7,5 +7,5 @@ import (
 )
 
 func Test_ListHandler_Handle(t *testing.T) {
-	assert.True(t, true)
+	assert.True(t, false)
 }
