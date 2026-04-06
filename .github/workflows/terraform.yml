@@ -24,26 +24,28 @@ jobs:
       - name: Build and push app image
         run: |
           docker buildx build \
-          --platform linux/amd64 \
-          -t eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
-          --push \
-          .
+            --platform linux/amd64 \
+            -t eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
+            --push \
+            -f Dockerfile \
+            .
           APP_DIGEST=$(docker buildx imagetools inspect \
-            eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
-            --format '{{json.Manifest}}' | jq -r '.digest'
+          eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
+          --format '{{json .Manifest}}' | jq -r '.digest')
           echo "APP_DIGEST=$APP_DIGEST" >> $GITHUB_ENV
 
       - name: Build and push cronjob image
         run: |
           docker buildx build \
-          --platform linux/amd64 \
-          -t eu.gcr.io/my-new-project-467616/kuber_practice_app_redis:latest \
-          --push \
-          .
+            --platform linux/amd64 \
+            -t eu.gcr.io/my-new-project-467616/kuber_practice_app_redis:latest \
+            --push \
+            -f Dockerfile.redis \
+            .
           CRONJOB_DIGEST=$(docker buildx imagetools inspect \
             eu.gcr.io/my-new-project-467616/kuber_practice_app_redis:latest \
-            --format '{{json.Manifest}}' | jq -r '.digest'
-          echo "CRONJOB_DIGEST=CRONJOB_DIGEST" >> $GITHUB_ENV
+            --format '{{json .Manifest}}' | jq -r '.digest')
+          echo "CRONJOB_DIGEST=$CRONJOB_DIGEST" >> $GITHUB_ENV
 
       - uses: hashicorp/setup-terraform@v3
         with:

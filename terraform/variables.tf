@@ -50,3 +50,11 @@ variable "vpc_self_link" {
 variable "api_key" {
   type = string
 }
+
+variable "app_image_digest" {
+  type = string
+}
+
+variable "cronjob_image_digest" {
+  type = string
+}

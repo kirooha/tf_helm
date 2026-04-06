@@ -1,11 +1,11 @@
 image:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app
-  digest: sha256:2bf1ef8505ca48ff5fd039b45b59edf1ed15c1b686ccfa5b52394d9f52644011
+  digest: set_in_terraform_helm_config
   pullPolicy: IfNotPresent
 
 cronJobImage:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app_redis
-  digest: sha256:084c2ed5796a8b491a629335dfa96d360ce5242d6bfafccfe605dc61066645fc
+  digest: set_in_terraform_helm_config
   pullPolicy: IfNotPresent
 
 replicaCount: 3

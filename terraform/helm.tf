@@ -55,4 +55,14 @@ resource "helm_release" "kuber_practice_app" {
     name = "api_key"
     value = var.api_key
   }
+
+  set {
+    name = "image.digest"
+    value = var.app_image_digest
+  }
+
+  set {
+    name = "cronJobImage.digest"
+    value = var.cronjob_image_digest
+  }
 }
