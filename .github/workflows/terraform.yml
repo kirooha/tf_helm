@@ -59,5 +59,18 @@ jobs:
         working-directory: terraform
         run: |
           terraform apply -auto-approve \
-            -var="app_image_digest=${{ env.APP_DIGEST }}" \
+            -var="project_id=${{ secrets.TF_VAR_PROJECT_ID }}" \
+            -var="region=${{ secrets.TF_VAR_REGION }}" \
+            -var="cluster_name=${{ secrets.TF_VAR_CLUSTER_NAME }}" \
+            -var="db_instance_name=${{ secrets.TF_VAR_DB_INSTANCE_NAME }}" \
+            -var="db_name=${{ secrets.TF_VAR_DB_NAME }}" \
+            -var="db_user=${{ secrets.TF_VAR_DB_USER }}" \
+            -var="db_password=${{ secrets.TF_VAR_DB_PASSWORD }}" \
+            -var="db_tier=${{ secrets.TF_VAR_DB_TIER }}" \
+            -var="redis_name=${{ secrets.TF_VAR_REDIS_NAME }}" \
+            -var="redis_size_gb=${{ secrets.TF_VAR_REDIS_SIZE_GB }}" \
+            -var="vpc_self_link=${{ secrets.TF_VAR_VPC_SELF_LINK }}" \
+            -var="authorized_cidr=${{ secrets.TF_VAR_AUTHORIZED_CIDR }}" \
+            -var="api_key=${{ secrets.TF_VAR_API_KEY }}" \
+            -var="cronjob_image_digest=${{ env.CRONJOB_DIGEST }}" \
             -var="cronjob_image_digest=${{ env.CRONJOB_DIGEST }}"
