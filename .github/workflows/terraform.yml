@@ -74,5 +74,5 @@ jobs:
             -var="vpc_self_link=${{ secrets.TF_VAR_VPC_SELF_LINK }}" \
             -var="authorized_cidr=${{ secrets.TF_VAR_AUTHORIZED_CIDR }}" \
             -var="api_key=${{ secrets.TF_VAR_API_KEY }}" \
-            -var="cronjob_image_digest=${{ env.CRONJOB_DIGEST }}" \
+            -var="app_image_digest=${{ env.APP_DIGEST }}" \
             -var="cronjob_image_digest=${{ env.CRONJOB_DIGEST }}"
