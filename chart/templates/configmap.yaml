@@ -4,9 +4,9 @@ metadata:
   name: kuber-practice-app-service-config
 data:
   PORT: "8080"
-  POSTGRES_USER: "kuber_practice_user"
-  POSTGRES_HOST: "172.20.0.3"
+  POSTGRES_HOST: "{{ .Values.postgres.host }}"
+  POSTGRES_USER: "{{ .Values.postgres.user }}"
   POSTGRES_PORT: "5432"
-  POSTGRES_DB: "kuber_practice"
+  POSTGRES_DB: "{{ .Values.postgres.db }}"
   MIGRATIONS_DIRECTORY: "/app/db/migrations"
-  REDIS_HOST: "10.153.136.179:6379"
+  REDIS_HOST: "{{ .Values.redis.host }}:6379"

@@ -1,3 +1,4 @@
+.idea
 commands
 http_requests/gcp
 terraform/.terraform
@@ -6,5 +7,4 @@ terraform/terraform.tfstate.backup
 terraform/terraform.tfvars
 terraform/.terraform.lock.hcl
 terraform/.terraform.tfstate.lock.info
-chart/templates/secret.yaml
 http_requests/gcp

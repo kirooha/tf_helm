@@ -1,0 +1,2 @@
+git commit --author="Kirill Parasotchenko <kir7ooha@gmail.com>" -m "commit"
+git push https://kirooha:$PERSONAL_GITHUB_TOKEN@github.com/kirooha/tf_helm.git

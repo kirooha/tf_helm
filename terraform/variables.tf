@@ -46,3 +46,7 @@ variable "redis_size_gb" {
 variable "vpc_self_link" {
   type = string
 }
+
+variable "api_key" {
+  type = string
+}

@@ -1,0 +1,61 @@
+name: Terraform
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for GCR
+        run: gcloud auth configure-docker eu.gcr.io
+
+      - name: Build and push app image
+        run: |
+          docker buildx build \
+          --platform linux/amd64 \
+          -t eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
+          --push \
+          .
+          APP_DIGEST=$(docker buildx imagetools inspect \
+            eu.gcr.io/my-new-project-467616/kuber_practice_app:latest \
+            --format '{{json.Manifest}}' | jq -r '.digest'
+          echo "APP_DIGEST=$APP_DIGEST" >> $GITHUB_ENV
+
+      - name: Build and push cronjob image
+        run: |
+          docker buildx build \
+          --platform linux/amd64 \
+          -t eu.gcr.io/my-new-project-467616/kuber_practice_app_redis:latest \
+          --push \
+          .
+          CRONJOB_DIGEST=$(docker buildx imagetools inspect \
+            eu.gcr.io/my-new-project-467616/kuber_practice_app_redis:latest \
+            --format '{{json.Manifest}}' | jq -r '.digest'
+          echo "CRONJOB_DIGEST=CRONJOB_DIGEST" >> $GITHUB_ENV
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.0"
+
+      - name: Terraform init
+        working-directory: terraform
+        run: terraform init
+
+      - name: Terraform apply
+        working-directory: terraform
+        run: |
+          terraform apply -auto-approve \
+            -var="app_image_digest=${{ env.APP_DIGEST }}" \
+            -var="cronjob_image_digest=${{ env.CRONJOB_DIGEST }}"

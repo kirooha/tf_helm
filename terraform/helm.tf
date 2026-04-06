@@ -20,4 +20,39 @@ resource "helm_release" "kuber_practice_app" {
   values = [
     file("../chart/values.yaml")
   ]
+
+  set {
+    name = "postgres.host"
+    value = google_sql_database_instance.postgres.private_ip_address
+  }
+
+  set {
+    name = "postgres.user"
+    value = var.db_user
+  }
+
+  set_sensitive {
+    name = "postgres.password"
+    value = var.db_password
+  }
+
+  set {
+    name = "postgres.db"
+    value = var.db_name
+  }
+
+  set {
+    name = "redis.host"
+    value = google_redis_instance.redis.host
+  }
+
+  set_sensitive {
+    name = "redis.password"
+    value = google_redis_instance.redis.auth_string
+  }
+
+  set_sensitive {
+    name = "api_key"
+    value = var.api_key
+  }
 }
