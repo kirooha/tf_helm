@@ -58,7 +58,9 @@ jobs:
       - name: Terraform apply
         working-directory: terraform
         run: |
-          terraform apply -auto-approve \
+          terraform apply \
+            -auto-approve \
+            -input=false \
             -var="project_id=${{ secrets.TF_VAR_PROJECT_ID }}" \
             -var="region=${{ secrets.TF_VAR_REGION }}" \
             -var="cluster_name=${{ secrets.TF_VAR_CLUSTER_NAME }}" \
