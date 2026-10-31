@@ -35,7 +35,7 @@ func (h *ListHandler) Handle(fiberCtx *fiber.Ctx) error {
 	)
 
 	if h.apiKey != headerApiKey {
-		//return fiberCtx.SendStatus(http.StatusForbidden)
+		return fiberCtx.SendStatus(http.StatusForbidden)
 	}
 
 	value, err := h.redisClient.Get(ctx, "filenames").Result()
