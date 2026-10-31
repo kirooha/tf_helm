@@ -12,6 +12,4 @@ gcloud config set project my-new-project-467616
 
 gcloud container clusters get-credentials test-cluster --region europe-west1
 
-gcloud redis instances get-auth-string kuber-practice-app-redis --region=europe-west1
-
 https://console.cloud.google.com/billing?organizationId=0

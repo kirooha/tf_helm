@@ -4,7 +4,7 @@ resource "google_redis_instance" "redis" {
   tier = "BASIC"
   memory_size_gb = var.redis_size_gb
 
-  authorized_network = var.vpc_self_link
+  authorized_network = data.google_compute_network.default.id
 
   redis_version = "REDIS_7_0"
   display_name = var.redis_name

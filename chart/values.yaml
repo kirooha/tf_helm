@@ -1,11 +1,11 @@
 image:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app
-  digest: set_in_terraform_helm_config
+  digest: sha256:c2667ed9d450db5eebe828e35c6335c9ca0c35794219b497e02947d299a58d45
   pullPolicy: IfNotPresent
 
 cronJobImage:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app_redis
-  digest: set_in_terraform_helm_config
+  digest: sha256:e05370e3fd0b7e49782d1b16217be7e588e70f8454552826db483c51275cf45b
   pullPolicy: IfNotPresent
 
 replicaCount: 3
@@ -13,15 +13,9 @@ replicaCount: 3
 service:
   type: ClusterIP
   port: 8080
-
+# Set by Terraform (helm.tf) from the Cloud SQL / Memorystore resources
 postgres:
-  host: set_in_terraform_helm_config
-  user: set_in_terraform_helm_config
-  password: set_in_terraform_helm_config
-  db: set_in_terraform_helm_config
+  host: ""
 
 redis:
-  host: set_in_terraform_helm_config
-  password: set_in_terraform_helm_config
-
-api_key: set_in_terraform_helm_config
+  host: ""

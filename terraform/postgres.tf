@@ -1,3 +1,8 @@
+resource "random_password" "db" {
+  length = 24
+  special = false
+}
+
 resource "google_sql_database_instance" "postgres" {
   name = var.db_instance_name
   region = var.region
@@ -38,5 +43,5 @@ resource "google_sql_user" "appuser" {
   name = var.db_user
   instance = google_sql_database_instance.postgres.name
 
-  password = var.db_password
+  password = random_password.db.result
 }

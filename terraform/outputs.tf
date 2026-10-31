@@ -34,3 +34,8 @@ output "redis_auth_string" {
   value = google_redis_instance.redis.auth_string
   sensitive = true
 }
+
+output "db_password" {
+  value = random_password.db.result
+  sensitive = true
+}
