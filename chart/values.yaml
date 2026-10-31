@@ -1,11 +1,11 @@
 image:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app
-  digest: sha256:83d81f0c2250c5e96061a9b3a7c84c435bb6b431bb1737249be0a3b2b3260bbc
+  digest: sha256:ec7d1f03e1363703c75ecda93ebedb5fd746cb7b32517bf474eea8a811536712
   pullPolicy: IfNotPresent
 
 cronJobImage:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app_redis
-  digest: sha256:e05370e3fd0b7e49782d1b16217be7e588e70f8454552826db483c51275cf45b
+  digest: sha256:83d81f0c2250c5e96061a9b3a7c84c435bb6b431bb1737249be0a3b2b3260bbc
   pullPolicy: IfNotPresent
 
 replicaCount: 3
