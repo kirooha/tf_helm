@@ -1,6 +1,6 @@
 image:
   repository: eu.gcr.io/my-new-project-467616/kuber_practice_app
-  digest: sha256:c2667ed9d450db5eebe828e35c6335c9ca0c35794219b497e02947d299a58d45
+  digest: sha256:83d81f0c2250c5e96061a9b3a7c84c435bb6b431bb1737249be0a3b2b3260bbc
   pullPolicy: IfNotPresent
 
 cronJobImage:
